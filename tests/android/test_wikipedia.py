@@ -1,4 +1,3 @@
-import allure
 from selene import browser, have
 from appium.webdriver.common.appiumby import AppiumBy
 from selene.support.conditions import be
@@ -8,18 +7,14 @@ from allure_commons.types import Severity
 pytestmark = [
     allure.label('layer', 'UI test'),
     allure.label('owner', 'ytamonova'),
-    allure.feature("Tes documentation")
+    allure.tag('android'),
+    allure.tag('mobile')
 ]
 
 
-@allure.title('Test 1')
-@allure.suite('Suite 1')
-@allure.tag('android')
-@allure.tag('hometask')
+@allure.title('Search article')
 @allure.severity(Severity.CRITICAL)
-@allure.story('Search article')
 def test_search_article():
-
     with allure.step("Поиск статьи"):
         browser.element((AppiumBy.CLASS_NAME, "android.widget.TextView")).click()
         browser.element((AppiumBy.ID, "org.wikipedia.alpha:id/search_src_text")).type("Python")
@@ -30,14 +25,9 @@ def test_search_article():
         results.first.should(have.text("Python"))
 
 
-@allure.title('Test 2')
-@allure.suite('Suite 1')
-@allure.tag('android')
-@allure.tag('hometask')
+@allure.title('Search article negative case')
 @allure.severity(Severity.CRITICAL)
-@allure.story('Search article negative case')
 def test_search_article_negative():
-
     with allure.step("Поиск статьи"):
         browser.element((AppiumBy.CLASS_NAME, "android.widget.TextView")).click()
         browser.element((AppiumBy.ID, "org.wikipedia.alpha:id/search_src_text")).type("Selenoid")
@@ -48,12 +38,8 @@ def test_search_article_negative():
         results.first.should(have.no.text("Selenoid"))
 
 
-@allure.title('Test 3')
-@allure.suite('Suite 1')
-@allure.tag('android')
-@allure.tag('hometask')
+@allure.title('Search several articles')
 @allure.severity(Severity.CRITICAL)
-@allure.story('Search several articles')
 def test_search_several_articles():
     with allure.step("Поиск статьи"):
         browser.element((AppiumBy.CLASS_NAME, "android.widget.TextView")).click()
@@ -93,12 +79,8 @@ def test_search_several_articles():
         browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/find_in_page_match')).should(have.text('1/2'))
 
 
-@allure.title('Test 4')
-@allure.suite('Suite 1')
-@allure.tag('android')
-@allure.tag('hometask')
+@allure.title('Clear search history')
 @allure.severity(Severity.CRITICAL)
-@allure.story('Clear search history')
 def test_clear_history():
     with allure.step("Поиск статьи"):
         browser.element((AppiumBy.CLASS_NAME, "android.widget.TextView")).click()
