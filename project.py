@@ -1,12 +1,12 @@
+from typing import Literal
 import pydantic_settings
 import dotenv
 from appium.options.android import UiAutomator2Options
 from utils import file
-import os
 
 
 class Config(pydantic_settings.BaseSettings):
-    context: str = 'bstack'
+    context: Literal['local_emulator', 'local_real', 'bstack'] = 'bstack'
 
     if context == 'bstack':
         dotenv.load_dotenv(dotenv_path=file.file_path('.env.credentials'))
