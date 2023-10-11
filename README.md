@@ -40,7 +40,7 @@
 1. Быть зарегистрированным на Browserstack
 2. В файле .env.credentials указать 
 * browserstack_username
-*browserstack_accesskey
+* browserstack_accesskey
 3. В файле env.bstack указать необходимые параметры для запуска 
 4. При запуске в терминале указать команду "context=bstack pytest ."
 
